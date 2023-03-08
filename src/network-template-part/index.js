@@ -17,9 +17,17 @@ const Edit = ( props ) => {
 	return (
 		<div { ...useBlockProps() }>
 			<InspectorControls>
-				<PanelBody title={ __( 'Template part options', 'network-template-parts' ) }>
+				<PanelBody
+					title={ __(
+						'Template part options',
+						'network-template-parts'
+					) }
+				>
 					<TextControl
-						label="Template part slug"
+						label={ __(
+							'Template part slug',
+							'network-template-parts'
+						) }
 						value={ partSlug }
 						onChange={ ( value ) =>
 							setAttributes( { partSlug: value } )
