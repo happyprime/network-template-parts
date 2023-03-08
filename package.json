@@ -1,0 +1,29 @@
+{
+	"name": "network-template-parts",
+	"version": "0.0.1",
+	"description": "",
+	"author": "Happy Prime",
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"plugin",
+		"wordpress"
+	],
+	"homepage": "https://github.com/happyprime/network-template-parts/",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/happyprime/network-template-parts.git"
+	},
+	"bugs": {
+		"url": "https://github.com/happyprime/network-template-parts/"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^25.5.1"
+	},
+	"scripts": {
+		"build": "wp-scripts build",
+		"start": "wp-scripts start",
+		"lint:js": "wp-scripts lint-js ",
+		"fix:js": "wp-scripts lint-js  --fix",
+		"lint:pkg-json": "wp-scripts lint-pkg-json"
+	}
+}
