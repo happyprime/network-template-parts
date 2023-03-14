@@ -8,11 +8,12 @@
 	"description": "Retrieve a template part from the site being viewed on the network.",
 	"version": "0.0.1",
 	"textdomain": "network-template-parts",
-	"editorScript": "file:./index.js",
+	"editorScript": "file:index.js",
 	"attributes": {
 		"partSlug": {
 			"type": "string",
 			"default": ""
 		}
-	}
+	},
+	"render": "file:render.php"
 }

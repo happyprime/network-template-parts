@@ -6,8 +6,14 @@
  * @package network-template-parts
  */
 
-define( 'NTP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-define( 'NTP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+namespace NTP;
 
-require_once __DIR__ . '/src/network-template-part/index.php';
-require_once __DIR__ . '/src/site-template-part/index.php';
+add_action( 'init', __NAMESPACE__ . '\register_blocks' );
+
+/**
+ * Register the blocks.
+ */
+function register_blocks() {
+	register_block_type_from_metadata( __DIR__ . '/build/network-template-part' );
+	register_block_type_from_metadata( __DIR__ . '/build/site-template-part' );
+}
