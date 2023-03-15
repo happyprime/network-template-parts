@@ -6,12 +6,12 @@
  */
 
 $ntp_block_defaults = [
-	'partSlug' => '',
+	'slug' => '',
 ];
 
 $attributes = wp_parse_args( $attributes, $ntp_block_defaults );
 
-if ( '' === $attributes['partSlug'] ) {
+if ( '' === $attributes['slug'] ) {
 	return '<p>Please specify a template part slug.</p>';
 }
 
@@ -19,7 +19,7 @@ if ( is_multisite() ) {
 	switch_to_blog( get_main_site_id() );
 }
 
-block_template_part( $attributes['partSlug'] );
+block_template_part( $attributes['slug'] );
 
 if ( is_multisite() ) {
 	restore_current_blog();

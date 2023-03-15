@@ -10,7 +10,7 @@
 	"textdomain": "network-template-parts",
 	"editorScript": "file:index.js",
 	"attributes": {
-		"partSlug": {
+		"slug": {
 			"type": "string",
 			"default": ""
 		}

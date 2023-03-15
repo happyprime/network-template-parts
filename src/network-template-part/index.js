@@ -10,7 +10,7 @@ import metadata from './block.json';
 
 const Edit = ( props ) => {
 	const {
-		attributes: { partSlug },
+		attributes: { slug },
 		setAttributes,
 	} = props;
 
@@ -25,12 +25,12 @@ const Edit = ( props ) => {
 				>
 					<TextControl
 						label={ __(
-							'Template part slug',
+							'Network template part',
 							'network-template-parts'
 						) }
-						value={ partSlug }
+						value={ slug }
 						onChange={ ( value ) =>
-							setAttributes( { partSlug: value } )
+							setAttributes( { slug: value } )
 						}
 					/>
 				</PanelBody>

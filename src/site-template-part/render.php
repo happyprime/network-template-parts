@@ -6,13 +6,13 @@
  */
 
 $stp_block_defaults = [
-	'partSlug' => '',
+	'slug' => '',
 ];
 
 $attributes = wp_parse_args( $attributes, $stp_block_defaults );
 $switched   = false;
 
-if ( '' === $attributes['partSlug'] ) {
+if ( '' === $attributes['slug'] ) {
 	return '<p>Please specify a template part slug.</p>';
 }
 
@@ -23,7 +23,7 @@ if ( is_multisite() && ! empty( $GLOBALS['_wp_switched_stack'] ) ) {
 	switch_to_blog( $GLOBALS['_wp_switched_stack'][ array_key_first( $GLOBALS['_wp_switched_stack'] ) ] );
 }
 
-block_template_part( $attributes['partSlug'] );
+block_template_part( $attributes['slug'] );
 
 if ( $switched ) {
 	restore_current_blog();
