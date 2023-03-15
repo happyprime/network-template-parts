@@ -1,6 +1,6 @@
 <?php
 /**
- * Render the Site Template Part block.
+ * Render the Site Template block.
  *
  * @package network-template-parts
  */
@@ -23,7 +23,7 @@ if ( is_multisite() && ! empty( $GLOBALS['_wp_switched_stack'] ) ) {
 	switch_to_blog( $GLOBALS['_wp_switched_stack'][ array_key_first( $GLOBALS['_wp_switched_stack'] ) ] );
 }
 
-block_template_part( 'site/parts/' . $attributes['slug'] );
+block_template_part( 'site/templates/' . $attributes['slug'] );
 
 if ( $switched ) {
 	restore_current_blog();
