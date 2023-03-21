@@ -19,7 +19,7 @@ if ( is_multisite() ) {
 	switch_to_blog( get_main_site_id() );
 }
 
-block_template_part( 'network/templates/' . $attributes['slug'] );
+block_template_part( 'network-templates-' . $attributes['slug'] );
 
 if ( is_multisite() ) {
 	restore_current_blog();
