@@ -18,10 +18,7 @@ const Edit = ( props ) => {
 		<div { ...useBlockProps() }>
 			<InspectorControls>
 				<PanelBody
-					title={ __(
-						'Template options',
-						'network-template-parts'
-					) }
+					title={ __( 'Template options', 'network-template-parts' ) }
 				>
 					<TextControl
 						label={ __(
