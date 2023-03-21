@@ -19,13 +19,13 @@ const Edit = ( props ) => {
 			<InspectorControls>
 				<PanelBody
 					title={ __(
-						'Template part options',
+						'Template options',
 						'network-template-parts'
 					) }
 				>
 					<TextControl
 						label={ __(
-							'Site template part',
+							'Site template',
 							'network-template-parts'
 						) }
 						value={ slug }
