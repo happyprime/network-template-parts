@@ -1,7 +1,8 @@
 // WordPress dependencies.
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import { registerBlockType } from '@wordpress/blocks';
-import { Disabled, PanelBody, TextControl } from '@wordpress/components';
+import { Disabled, PanelBody, SelectControl } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import ServerSideRender from '@wordpress/server-side-render';
 
@@ -14,6 +15,36 @@ const Edit = ( props ) => {
 		setAttributes,
 	} = props;
 
+	const { options } = useSelect( ( select ) => {
+		const parts = select( 'core' ).getEntityRecords(
+			'postType',
+			'wp_template_part',
+			{
+				per_page: -1,
+			}
+		);
+
+		const partOptions = parts
+			? parts
+					.filter( ( part ) =>
+						part.slug.startsWith( 'network-templates-' )
+					)
+					.map( ( part ) => ( {
+						label: part.slug.slice( 18 ),
+						value: part.slug.slice( 18 ),
+					} ) )
+			: [];
+
+		partOptions.unshift( {
+			label: __( 'None', 'network-template-parts' ),
+			value: '',
+		} );
+
+		return {
+			options: partOptions,
+		};
+	}, [] );
+
 	return (
 		<div { ...useBlockProps() }>
 			<InspectorControls>
@@ -23,12 +54,13 @@ const Edit = ( props ) => {
 						'network-template-parts'
 					) }
 				>
-					<TextControl
+					<SelectControl
 						label={ __(
 							'Network template part',
 							'network-template-parts'
 						) }
 						value={ slug }
+						options={ options }
 						onChange={ ( value ) =>
 							setAttributes( { slug: value } )
 						}
