@@ -26,7 +26,7 @@ namespace NTP;
 
 define( 'NTP_PLUGIN_DIR', __DIR__ );
 
-require_once __DIR__ . '/src/network-template/index.php';
-require_once __DIR__ . '/src/network-template-part/index.php';
-require_once __DIR__ . '/src/site-template/index.php';
-require_once __DIR__ . '/src/site-template-part/index.php';
+require_once __DIR__ . '/blocks/network-template/index.php';
+require_once __DIR__ . '/blocks/network-template-part/index.php';
+require_once __DIR__ . '/blocks/site-template/index.php';
+require_once __DIR__ . '/blocks/site-template-part/index.php';
