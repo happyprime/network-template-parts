@@ -1,6 +1,6 @@
 {
 	"name": "network-template-parts",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"description": "",
 	"author": "Happy Prime",
 	"license": "GPL-2.0-or-later",
@@ -17,7 +17,7 @@
 		"url": "https://github.com/happyprime/network-template-parts/"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^26.0.0"
+		"@wordpress/scripts": "^26.2.0"
 	},
 	"scripts": {
 		"build": "wp-scripts build",

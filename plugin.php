@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Network Template Parts
- * Version: 0.0.1
+ * Version: 0.1.0
  *
  * @package network-template-parts
  */
