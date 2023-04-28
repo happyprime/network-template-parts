@@ -1,8 +1,23 @@
 # Network Template Parts
 
-The **Network Template Part** block loads a block template part from the main site on the network.
+Network Template Parts provides a way to share responsibility for the look and feel of websites on a multisite network.
 
-The **Site Template Part** block loads a block template part from the site that created the page view.
+General workflow assumptions:
+
+* Templates are provided by the theme and should not be edited.
+* Network-level templates and parts are managed by network administrators.
+* Site-level templates and parts are managed by site or network administrators.
+* Once a template part has been edited in WordPress, it stops receiving updates from the theme.
+
+Plugin definitions:
+
+* Template: files stored in `templates/`.
+* Network Templates: files stored as `parts/network-templates-*.html`.
+* Site Templates: files stored as `parts/site-templates-*.html`.
+* Network Template Parts: files stored as `parts/network-parts-*.html`.
+* Site Template Parts: files stored as `parts/site-parts-*.html`.
+
+This plugin works in tandem with Restrict Network Templates to restrict the editing of templates on individual sites.
 
 ## Why is this necessary?
 
