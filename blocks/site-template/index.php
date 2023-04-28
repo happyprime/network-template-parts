@@ -1,6 +1,6 @@
 <?php
 /**
- * Render the Site Template block.
+ * Manage the Site Template block.
  *
  * @package network-template-parts
  */

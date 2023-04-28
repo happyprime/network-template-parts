@@ -1,6 +1,6 @@
 <?php
 /**
- * Render the Network Template block.
+ * Manage the Network Template block.
  *
  * @package network-template-parts
  */
