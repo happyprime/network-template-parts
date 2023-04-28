@@ -17,7 +17,7 @@
 		"url": "https://github.com/happyprime/network-template-parts/"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^26.2.0"
+		"@wordpress/scripts": "^26.3.0"
 	},
 	"scripts": {
 		"build": "wp-scripts build --webpack-src-dir=blocks --output-path=build",
