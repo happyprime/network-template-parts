@@ -20,10 +20,10 @@
 		"@wordpress/scripts": "^26.2.0"
 	},
 	"scripts": {
-		"build": "wp-scripts build",
-		"start": "wp-scripts start",
-		"lint:js": "wp-scripts lint-js ",
-		"fix:js": "wp-scripts lint-js  --fix",
+		"build": "wp-scripts build --webpack-src-dir=blocks --output-path=build",
+		"start": "wp-scripts start --webpack-src-dir=blocks --output-path=build",
+		"lint": "wp-scripts lint-js blocks/",
+		"fix": "wp-scripts lint-js  blocks/ --fix",
 		"lint:pkg-json": "wp-scripts lint-pkg-json"
 	}
 }

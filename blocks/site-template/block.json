@@ -1,11 +1,11 @@
 {
 	"$schema": "https://json.schemastore.org/block.json",
 	"apiVersion": 2,
-	"name": "ntp/site-template-part",
-	"title": "Site Template Part",
+	"name": "ntp/site-template",
+	"title": "Site Template",
 	"category": "widgets",
 	"icon": "location",
-	"description": "Retrieve a template part from the site being viewed on the network.",
+	"description": "Retrieve a template from the site being viewed on the network.",
 	"version": "0.0.1",
 	"textdomain": "network-template-parts",
 	"editorScript": "file:index.js",
@@ -14,6 +14,5 @@
 			"type": "string",
 			"default": ""
 		}
-	},
-	"render": "file:render.php"
+	}
 }

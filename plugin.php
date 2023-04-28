@@ -24,14 +24,9 @@
 
 namespace NTP;
 
-add_action( 'init', __NAMESPACE__ . '\register_blocks' );
+define( 'NTP_PLUGIN_DIR', __DIR__ );
 
-/**
- * Register the blocks.
- */
-function register_blocks() {
-	register_block_type_from_metadata( __DIR__ . '/build/network-template' );
-	register_block_type_from_metadata( __DIR__ . '/build/network-template-part' );
-	register_block_type_from_metadata( __DIR__ . '/build/site-template' );
-	register_block_type_from_metadata( __DIR__ . '/build/site-template-part' );
-}
+require_once __DIR__ . '/blocks/network-template/index.php';
+require_once __DIR__ . '/blocks/network-template-part/index.php';
+require_once __DIR__ . '/blocks/site-template/index.php';
+require_once __DIR__ . '/blocks/site-template-part/index.php';
