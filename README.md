@@ -44,27 +44,27 @@ A template is a file stored in a theme's `templates/` directory.
 
 A network template is a file prefixed as `network-templates-` and stored in the theme's `parts/` directory. (e.g. `parts/network-templates-home.html`)
 
-Network templates can be added to content with the Network Template block provided by this plugin.
+The Network Template block renders network templates in the context of the network's main site. These are intended to be used in place of the templates normally found in a theme's `templates/` directory, but with network-level data.
 
 ### Site Templates
 
 A site template is a file prefixed as `site-templates-` and stored in the theme's `parts/` directory. (e.g. `parts/site-templates-home.html`)
 
-Site templates can be added to content with the Site Template block provided by this plugin.
+The Site Template block renders a template part in the context of the current site. These are intended to be used in place of the templates normally found in a theme's `templates/` directory.
 
 ### Network Template Parts
 
 A network template part is a file prefixed as `network-parts-` and stored in the theme's `parts/` directory. (e.g. `parts/network-parts-header.html`)
 
-Network template parts can be added to content with the Network Template Part block provided by this plugin.
+The Network Template Parts block renders a template part in the context of the network's main site. These are the same as any template part found in a theme's `parts/` directory, but with the intent to render network-level data.
 
 ### Site Template Parts
 
 A site template part is a file prefixed as `site-parts-` and stored in the theme's `parts/` directory. (e.g. `parts/site-parts-header-navigation.html`)
 
-Site template parts can be added to content with the Site Template Part block provided by this plugin.
+The Site Template Part block renders a template part in the context of the current site. These are the same as any template part found in a theme's `parts/` directory, but with the intent to always render site-level data.
 
-### An example theme template structure
+## Examples
 
 Often, a network will provide common header and footer areas while leaving the site content between to site administrators. With Network Template Parts, this can be accomplished as so:
 
@@ -88,7 +88,7 @@ Skipping ahead to the main content, the `parts/network-templates-index.html` fil
 <!-- /wp:group -->
 ```
 
-This provides a common wrapper container around a site-level template part, `parts/site-templates-index.html`. This file can be left as is or taken over by an individual site administrator to provide a custom layout while keeping the network's header and footer intact.
+This provides a common wrapping container around a site-level template part, `parts/site-templates-index.html`. The site-level part can be left as is or overwritten by an individual site administrator through the full site editor to provide a custom layout while keeping the network's header and footer intact.
 
 The `parts/network-parts-header.html` file main contain:
 
@@ -115,40 +115,6 @@ This defines two areas in the header to be managed at the network level. The `pa
 This provides some common HTML structure, loads a network-level logo, and also provides a site-level navigation in `parts/site-parts-header-main-navigation.html`.
 
 Now, an individual site administrator can make changes to a navigation menu while also receiving updates from the theme and the network if the look and feel of the broader network changes.
-
-## Blocks
-
-### Network Template
-
-The Network Template block renders a template part in the context of the network's main site. These are intended to be used in place of templates normally found in a theme's `templates/` directory as a way to render network level data. They must be stored in the `parts/` directory and prefixed as `network-templates-`.
-
-#### Example
-
-A theme's `parts/network-templates-404.html` will appear as "404" in the Network Template block's select menu.
-
-### Network Template Part
-
-The Network Template block renders a template part in the context of the network's main site. These are the same as any template part found in a theme's `parts/` directory, but with the intent to render network-level data. They must be stored in the `parts/` directory and prefixed as `network-parts-`.
-
-#### Example
-
-A theme's `parts/network-parts-header.html` will appear as "header" in the Network Template Part block's select menu.
-
-### Site Template
-
-The Site Template block renders a template part in the context of the current site. These are intended to be used in place of the templates normally found in a theme's `templates/` directory. They must be stored in the `parts/` directory and prefixed as `site-templates-`.
-
-#### Example
-
-A theme's `parts/site-templates-archive.html` will appear as "archive" in the Site Template block's select menu.
-
-### Site Template Part
-
-The Site Template Part block renders a template part in the context of the current site. These are the same as any template part found in a theme's `parts/` directory, but with the intent to always render site-level data. They must be stored in the `parts/` directory and prefixed as `site-parts-`.
-
-### Example
-
-A theme's `parts/site-parts-footer.html` will appear as "footer" in the Site Template Part block's select menu.
 
 ## Changelog
 
