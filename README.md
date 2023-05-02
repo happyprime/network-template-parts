@@ -14,7 +14,7 @@ This plugin attempts to provide site administrators access to parts of a site in
 
 This plugin works in tandem with [Restrict Network Templates](https://github.com/happyprime/restrict-network-templates), which restricts the editing of templates and network-level parts on individual sites.
 
-## Workflow assumptions
+## Assumptions
 
 ### Templates provided by the theme should not be edited.
 
@@ -34,13 +34,35 @@ Parts of a theme's structure rely on data from individual sites on a network. (e
 
 It should be possible to override site-level template parts from an individual site.
 
-## Plugin definitions
+## Definitions
 
-* Template: files stored in `templates/`.
-* Network Templates: files stored as `parts/network-templates-*.html`.
-* Site Templates: files stored as `parts/site-templates-*.html`.
-* Network Template Parts: files stored as `parts/network-parts-*.html`.
-* Site Template Parts: files stored as `parts/site-parts-*.html`.
+### Template
+
+A template is a file stored in a theme's `templates/` directory.
+
+### Network Templates
+
+A network template is a file prefixed as `network-templates-` and stored in the theme's `parts/` directory. (e.g. `parts/network-templates-home.html`)
+
+Network templates can be added to content with the Network Template block provided by this plugin.
+
+### Site Templates
+
+A site template is a file prefixed as `site-templates-` and stored in the theme's `parts/` directory. (e.g. `parts/site-templates-home.html`)
+
+Site templates can be added to content with the Site Template block provided by this plugin.
+
+### Network Template Parts
+
+A network template part is a file prefixed as `network-parts-` and stored in the theme's `parts/` directory. (e.g. `parts/network-parts-header.html`)
+
+Network template parts can be added to content with the Network Template Part block provided by this plugin.
+
+### Site Template Parts
+
+A site template part is a file prefixed as `site-parts-` and stored in the theme's `parts/` directory. (e.g. `parts/site-parts-header-navigation.html`)
+
+Site template parts can be added to content with the Site Template Part block provided by this plugin.
 
 ### An example theme template structure
 
