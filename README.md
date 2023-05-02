@@ -46,11 +46,15 @@ A network template is a file prefixed as `network-templates-` and stored in the 
 
 The Network Template block renders network templates in the context of the network's main site. These are intended to be used in place of the templates normally found in a theme's `templates/` directory, but with network-level data.
 
+The template selection interface provided by this block will remove `network-templates-` from the name and allow you to select from a list like: home, index, 404, etc…
+
 ### Site Templates
 
 A site template is a file prefixed as `site-templates-` and stored in the theme's `parts/` directory. (e.g. `parts/site-templates-home.html`)
 
 The Site Template block renders a template part in the context of the current site. These are intended to be used in place of the templates normally found in a theme's `templates/` directory.
+
+The template selection interface provided by this block will remove `site-templates-` from the name and allow you to select from a list like: home, index, 404, etc…
 
 ### Network Template Parts
 
@@ -58,11 +62,15 @@ A network template part is a file prefixed as `network-parts-` and stored in the
 
 The Network Template Parts block renders a template part in the context of the network's main site. These are the same as any template part found in a theme's `parts/` directory, but with the intent to render network-level data.
 
+The template selection interface provided by this block will remove `network-parts-` from the name and allow you to select from a list like: header, header-main, etc…
+
 ### Site Template Parts
 
 A site template part is a file prefixed as `site-parts-` and stored in the theme's `parts/` directory. (e.g. `parts/site-parts-header-navigation.html`)
 
 The Site Template Part block renders a template part in the context of the current site. These are the same as any template part found in a theme's `parts/` directory, but with the intent to always render site-level data.
+
+The template selection interface provided by this block will remove `site-parts-` from the name and allow you to select from a list like: header, header-main, etc…
 
 ## Examples
 
