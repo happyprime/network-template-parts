@@ -2,28 +2,45 @@
 
 Network Template Parts provides a way to share responsibility for the look and feel of websites on a multisite network.
 
-General workflow assumptions:
+## Overview
 
-* Templates are provided by the theme and should not be edited.
-* Network-level templates and parts are managed by network administrators.
-* Site-level templates and parts are managed by site or network administrators.
-* Once a template part has been edited in WordPress, it stops receiving updates from the theme.
+The full site editor in WordPress provides a powerful way to manage the look and feel of a website. This can become complicated when that look and feel is shared across many websites on a multisite network.
 
-Plugin definitions:
+When managing a brand across many sites, it is often necessary to ship changes to the look and feel with the certainty that they will be applied immediately.
+
+In its current iteration, the full site editor allows all individual site administrators to make changes to a theme's templates and parts. Once a template or a template part has been edited on an individual site, it stops receiving updates from the theme automatically, which may in turn cause unintended consequences.
+
+This plugin attempts to provide site administrators access to parts of a site in the full site editor without accidentally overwriting pieces that should remain consistent.
+
+This plugin works in tandem with [Restrict Network Templates](https://github.com/happyprime/restrict-network-templates), which restricts the editing of templates and network-level parts on individual sites.
+
+## Workflow assumptions
+
+### Templates provided by the theme should not be edited.
+
+The core HTML structure of the theme is provided by templates. (e.g. `home.html`)
+
+It should be possible to set a structure in these templates and assume that they will not be overridden on individual sites.
+
+### Network-level templates and parts are managed by network administrators.
+
+Parts of a theme's structure rely on data from the main site on a network. (e.g. global navigation)
+
+It should not be possible to override network-level templates and parts from an individual site.
+
+### Site-level templates and parts are managed by site or network administrators.
+
+Parts of a theme's structure rely on data from individual sites on a network. (e.g. site navigation, content)
+
+It should be possible to override site-level template parts from an individual site.
+
+## Plugin definitions
 
 * Template: files stored in `templates/`.
 * Network Templates: files stored as `parts/network-templates-*.html`.
 * Site Templates: files stored as `parts/site-templates-*.html`.
 * Network Template Parts: files stored as `parts/network-parts-*.html`.
 * Site Template Parts: files stored as `parts/site-parts-*.html`.
-
-This plugin works in tandem with Restrict Network Templates to restrict the editing of templates on individual sites.
-
-## Why is this necessary?
-
-The WordPress site editor makes it possible for individual site administrators to make changes to a theme's templates and parts. This is a useful way for people to manage their website, though it may cause unintended consequences when the theme is also used as a way to deliver a consistent brand across a network of sites.
-
-This plugin attempts to provide site administrators editor access to pieces of a site without accidentally overwriting pieces that should stay consistent.
 
 ### An example theme template structure
 
