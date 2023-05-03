@@ -131,7 +131,7 @@ Now, an individual site administrator can make changes to a navigation menu whil
 
 ## Changelog
 
-### 1.0.0
+### 0.1.1
 
 * Provide a select interface for site and network template parts.
 * Improve plugin documentation.

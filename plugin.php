@@ -2,7 +2,7 @@
 /**
  * Plugin Name:  Network Template Parts
  * Description:  Manage site and network level block template parts.
- * Version:      0.1.0
+ * Version:      0.1.1
  * Plugin URI:   https://github.com/happyprime/network-template-parts/
  * Author:       Happy Prime
  * Author URI:   https://happyprime.co
