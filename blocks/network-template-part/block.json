@@ -5,7 +5,7 @@
 	"title": "Network Template Part",
 	"category": "widgets",
 	"icon": "location",
-	"description": "Retrieve a template part from the main site on the network.",
+	"description": "Render a template part in the context of a site or network.",
 	"version": "0.0.1",
 	"textdomain": "network-template-parts",
 	"editorScript": "file:index.js",
@@ -13,6 +13,10 @@
 		"slug": {
 			"type": "string",
 			"default": ""
+		},
+		"context": {
+			"type": "string",
+			"default": "site"
 		}
 	}
 }

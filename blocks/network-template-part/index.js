@@ -11,7 +11,7 @@ import metadata from './block.json';
 
 const Edit = ( props ) => {
 	const {
-		attributes: { slug },
+		attributes: { slug, context },
 		setAttributes,
 	} = props;
 
@@ -25,14 +25,10 @@ const Edit = ( props ) => {
 		);
 
 		const partOptions = parts
-			? parts
-					.filter( ( part ) =>
-						part.slug.startsWith( 'network-parts-' )
-					)
-					.map( ( part ) => ( {
-						label: part.slug.slice( 14 ),
-						value: part.slug.slice( 14 ),
-					} ) )
+			? parts.map( ( part ) => ( {
+					label: part.slug,
+					value: part.slug,
+			  } ) )
 			: [];
 
 		partOptions.unshift( {
@@ -64,6 +60,23 @@ const Edit = ( props ) => {
 						onChange={ ( value ) =>
 							setAttributes( { slug: value } )
 						}
+					/>
+					<SelectControl
+						label={ __( 'Context', 'network-template-parts' ) }
+						value={ context }
+						options={ [
+							{
+								label: 'Site',
+								value: 'site',
+							},
+							{
+								label: 'Network',
+								value: 'network',
+							},
+						] }
+						onChange={ ( value ) => {
+							setAttributes( { context: value } );
+						} }
 					/>
 				</PanelBody>
 			</InspectorControls>

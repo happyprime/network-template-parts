@@ -29,7 +29,8 @@ function register_block() {
  */
 function get_block_html( array $attributes ): string {
 	$ntp_block_defaults = [
-		'slug' => '',
+		'slug'    => '',
+		'context' => 'site',
 	];
 
 	$attributes = wp_parse_args( $attributes, $ntp_block_defaults );
@@ -38,15 +39,23 @@ function get_block_html( array $attributes ): string {
 		return '<p>Please specify a template part slug.</p>';
 	}
 
-	if ( is_multisite() ) {
+	$switched = false;
+
+	if ( 'network' === $attributes['context'] && is_multisite() && ! is_main_site() ) {
+		$switched = true;
 		switch_to_blog( get_main_site_id() );
+	} elseif ( 'site' === $attributes['context'] && is_multisite() && ! empty( $GLOBALS['_wp_switched_stack'] ) ) {
+		$switched = true;
+
+		// We're already operating in a switched state, switch to the site that made the original request.
+		switch_to_blog( $GLOBALS['_wp_switched_stack'][ array_key_first( $GLOBALS['_wp_switched_stack'] ) ] );
 	}
 
 	ob_start();
-	block_template_part( 'network-parts-' . $attributes['slug'] );
+	block_template_part( $attributes['slug'] );
 	$content = ob_get_clean();
 
-	if ( is_multisite() ) {
+	if ( $switched ) {
 		restore_current_blog();
 	}
 
