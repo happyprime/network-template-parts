@@ -56,7 +56,7 @@ const Edit = ( props ) => {
 				>
 					<SelectControl
 						label={ __(
-							'Network template part',
+							'Template',
 							'network-template-parts'
 						) }
 						value={ slug }
