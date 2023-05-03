@@ -1,7 +1,7 @@
 {
 	"name": "network-template-parts",
-	"version": "0.1.1",
-	"description": "",
+	"version": "1.0.0",
+	"description": "Render template parts in a site or network context.",
 	"author": "Happy Prime",
 	"license": "GPL-2.0-or-later",
 	"keywords": [
