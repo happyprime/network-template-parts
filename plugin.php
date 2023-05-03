@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:  Network Template Parts
- * Description:  Manage site and network level block template parts.
+ * Description:  Render template parts in a site or network context.
  * Version:      0.1.1
  * Plugin URI:   https://github.com/happyprime/network-template-parts/
  * Author:       Happy Prime

@@ -1,6 +1,6 @@
 # Network Template Parts
 
-Share responsibility for the look and feel of websites on a multisite network.
+Render template parts in a site or network context.
 
 ## Description
 

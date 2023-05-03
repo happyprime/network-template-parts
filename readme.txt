@@ -1,13 +1,13 @@
 # Network Template Parts
 Contributors: happyprime, jeremyfelt, slocker, philcable
-Tags: comments
+Tags: site-editor, templates, multisite
 Requires at least: 6.2
 Tested up to: 6.2
 Stable tag: 1.0.0
 License: GPLv2 or later
 Requires PHP: 7.4
 
-Share responsibility for the look and feel of websites on a multisite network.
+Render template parts in a site or network context.
 
 ## Description
 
