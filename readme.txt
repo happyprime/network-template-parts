@@ -1,81 +1,52 @@
 # Network Template Parts
 Contributors: happyprime, jeremyfelt, slocker, philcable
-Tags: comments
+Tags: site-editor, templates, multisite
 Requires at least: 6.2
 Tested up to: 6.2
 Stable tag: 1.0.0
 License: GPLv2 or later
 Requires PHP: 7.4
 
-Share responsibility for the look and feel of websites on a multisite network.
+Render template parts in a site or network context.
 
 ## Description
 
 When managing a brand across many sites, it is often necessary to ship changes to the look and feel with the certainty that they will be applied immediately.
 
-In its current iteration, the full site editor allows individual site administrators to make changes to a theme's templates and template parts. Once a template or a template part has been edited on an individual site, it no longer receives updates from the theme automatically, which may in turn cause unintended consequences.
+In its current iteration, the WordPress site editor allows individual site administrators to make changes to a theme's templates and template parts. Once a template or a template part has been edited on an individual site, it no longer receives updates from the theme automatically, which may in turn cause unintended consequences.
 
-This plugin provides a way for site administrators to edit parts of the site in the site without accidentally overwriting pieces that should remain consistent.
+This plugin provides a way for site administrators to edit parts of the site without accidentally overwriting pieces that should remain consistent.
 
-Network Template Parts works in tandem with [Restrict Network Templates](https://github.com/happyprime/restrict-network-templates), which restricts the editing of templates and network-level parts on individual sites.
+Network Template Parts works in tandem with [Restrict Network Templates](https://github.com/happyprime/restrict-network-templates), which restricts the editing of templates on individual sites.
 
 ## Assumptions
 
 ### Templates provided by the theme should not be edited.
 
-The core HTML structure of the theme is provided by templates. (e.g. `home.html`)
+A theme's core structure is defined by templates. (e.g. `templates/home.html`)
 
 It should be possible to set a structure in these templates and assume that they will not be overridden on individual sites.
 
-### Network-level templates and parts are managed by network administrators.
+### Network-level template parts are managed by network administrators.
 
 Parts of a theme's structure rely on data from the main site on a network. (e.g. global navigation)
 
-It should not be possible to override network-level templates and parts from an individual site.
+It should be possible for a template to specify that a section of a page is rendered in the context of the main site.
 
-### Site-level templates and parts are managed by site or network administrators.
+### Site-level template parts are managed by site administrators.
 
 Parts of a theme's structure rely on data from individual sites on a network. (e.g. site navigation, content)
 
 It should be possible to override site-level template parts from an individual site.
 
-## Definitions
+## Block
 
-### Template
+The Network Template Part block renders a selected template part in either a "site" or "network" context.
 
-A template is a file stored in a theme's `templates/` directory.
+Attributes:
 
-### Network Templates
-
-A network template is a file prefixed as `network-templates-` and stored in the theme's `parts/` directory. (e.g. `parts/network-templates-home.html`)
-
-The Network Template block renders network templates in the context of the network's main site. These are intended to be used in place of the templates normally found in a theme's `templates/` directory, but with network-level data.
-
-The template selection interface provided by this block will remove `network-templates-` from the name and allow you to select from a list like: home, index, 404, etc…
-
-### Site Templates
-
-A site template is a file prefixed as `site-templates-` and stored in the theme's `parts/` directory. (e.g. `parts/site-templates-home.html`)
-
-The Site Template block renders a template part in the context of the current site. These are intended to be used in place of the templates normally found in a theme's `templates/` directory.
-
-The template selection interface provided by this block will remove `site-templates-` from the name and allow you to select from a list like: home, index, 404, etc…
-
-### Network Template Parts
-
-A network template part is a file prefixed as `network-parts-` and stored in the theme's `parts/` directory. (e.g. `parts/network-parts-header.html`)
-
-The Network Template Parts block renders a template part in the context of the network's main site. These are the same as any template part found in a theme's `parts/` directory, but with the intent to render network-level data.
-
-The template selection interface provided by this block will remove `network-parts-` from the name and allow you to select from a list like: header, header-main, etc…
-
-### Site Template Parts
-
-A site template part is a file prefixed as `site-parts-` and stored in the theme's `parts/` directory. (e.g. `parts/site-parts-header-navigation.html`)
-
-The Site Template Part block renders a template part in the context of the current site. These are the same as any template part found in a theme's `parts/` directory, but with the intent to always render site-level data.
-
-The template selection interface provided by this block will remove `site-parts-` from the name and allow you to select from a list like: header, header-main, etc…
+* `slug` determines which template part to load. Template parts are located in a theme's `parts/` directory.
+* `context` determines the context in which the part should render.
 
 ## Examples
 
@@ -84,52 +55,45 @@ Often, a network will provide common header and footer areas while leaving the s
 A `templates/index.html` file may contain:
 
 <code>
-<!-- wp:ntp/network-template-part {"slug":"header"} /-->
-<!-- wp:ntp/network-template {"slug":"index"} /-->
-<!-- wp:ntp/network-template-part {"slug":"footer"} /-->
-</code>
+<!-- wp:ntp/network-template-part {"slug":"header","context":"network"} /-->
+<!-- wp:ntp/network-template-part {"slug":"main-index","context":"site"} /-->
+<!-- wp:ntp/network-template-part {"slug":"footer","context":"network"} /-->
+</code>>
 
-This loads `parts/network-parts-header.html`, `parts/network-templates-index.html`, and `parts/network-parts-footer.html`.
+This loads `parts/header.html` from the main site on the network, `parts/main-index.html` from the current site, and `parts/footer.html` from the main site on the network.
 
-Skipping ahead to the main content, the `parts/network-templates-index.html` file may contain:
-
-<code>
-<!-- wp:group {"tagName":"main"} -->
-<main class="wp-block-group">
-	<!-- wp:ntp/site-template {"slug":"index"} /-->
-</main>
-<!-- /wp:group -->
-</code>
-
-This provides a common wrapping container around a site-level template part, `parts/site-templates-index.html`. The site-level part can be left as is or overwritten by an individual site administrator through the full site editor to provide a custom layout while keeping the network's header and footer intact.
-
-The `parts/network-parts-header.html` file main contain:
+The `parts/header.html` file main contain:
 
 <code>
-<!-- wp:ntp/network-template-part {"slug":"header-top"} /-->
-<!-- wp:ntp/network-template-part {"slug":"header-main"} /-->
-</code>
+<!-- wp:ntp/network-template-part {"slug":"header-top","context":"network"} /-->
+<!-- wp:ntp/network-template-part {"slug":"header-main","context":"network"} /-->
+</code>>
 
-This defines two areas in the header to be managed at the network level. The `parts/network-parts-header-main.html` may contain something like:
+This defines two areas in the header to be managed at the network level. The `parts/header-main.html` may contain something like:
 
 <code>
 <!-- wp:group -->
 <div class="wp-block-group">
 	<!-- wp:group {"tagName":"header"} -->
 	<header class="wp-block-group">
-		<!-- wp:ntp/network-template-part {"slug":"header-main-network-logo"} /-->
-		<!-- wp:ntp/site-template-part {"slug":"header-main-navigation"} /-->
+		<!-- wp:ntp/network-template-part {"slug":"header-main-network-logo","context":"network"} /-->
+		<!-- wp:ntp/network-template-part {"slug":"header-main-site-navigation","context":"site"} /-->
 	</header>
 	<!-- /wp:group -->
 </div>
 <!-- /wp:group -->
-</code>
+</code>>
 
-This provides some common HTML structure, loads a network-level logo, and also provides a site-level navigation in `parts/site-parts-header-main-navigation.html`.
+This provides some common HTML structure, loads a network-level logo, and also provides a site-level navigation in `parts/header-main-site-navigation.html`.
 
 Now, an individual site administrator can make changes to a navigation menu while also receiving updates from the theme and the network if the look and feel of the broader network changes.
 
 ## Changelog
+
+### 1.0.0
+
+* Consolidate into one block: Network Template Part.
+* Add "context" attribute.
 
 ### 0.1.1
 
