@@ -2,11 +2,12 @@
 /**
  * Plugin Name:  Network Template Parts
  * Description:  Render template parts in a site or network context.
- * Version:      1.0.0
+ * Version:      1.0.1
  * Plugin URI:   https://github.com/happyprime/network-template-parts/
  * Author:       Happy Prime
  * Author URI:   https://happyprime.co
  * Text Domain:  network-template-parts
+ * Domain Path:  /languages
  * Requires PHP: 7.4
  *
  * This program is free software; you can redistribute it and/or modify

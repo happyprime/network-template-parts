@@ -3,7 +3,7 @@ Contributors: happyprime, jeremyfelt, slocker, philcable
 Tags: site-editor, templates, multisite
 Requires at least: 6.2
 Tested up to: 6.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 Requires PHP: 7.4
 
@@ -89,6 +89,12 @@ This provides some common HTML structure, loads a network-level logo, and also p
 Now, an individual site administrator can make changes to a navigation menu while also receiving updates from the theme and the network if the look and feel of the broader network changes.
 
 ## Changelog
+
+### 1.0.1
+
+* Update `@wordpress/scripts` dependency to 26.6.0.
+* Add POT file.
+* Initial wp.org release.
 
 ### 1.0.0
 
