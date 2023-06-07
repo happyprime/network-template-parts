@@ -7,6 +7,7 @@
  * Author:       Happy Prime
  * Author URI:   https://happyprime.co
  * Text Domain:  network-template-parts
+ * Domain Path:  /languages
  * Requires PHP: 7.4
  *
  * This program is free software; you can redistribute it and/or modify
