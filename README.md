@@ -83,6 +83,12 @@ Now, an individual site administrator can make changes to a navigation menu whil
 
 ## Changelog
 
+### 1.0.1
+
+* Update `@wordpress/scripts` dependency to 26.6.0.
+* Add POT file.
+* Initial wp.org release.
+
 ### 1.0.0
 
 * Consolidate into one block: Network Template Part.
