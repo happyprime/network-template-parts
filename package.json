@@ -1,6 +1,6 @@
 {
 	"name": "network-template-parts",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Render template parts in a site or network context.",
 	"author": "Happy Prime",
 	"license": "GPL-2.0-or-later",
@@ -17,7 +17,7 @@
 		"url": "https://github.com/happyprime/network-template-parts/"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^26.6.0"
+		"@wordpress/scripts": "^26.8.0"
 	},
 	"scripts": {
 		"build": "wp-scripts build --webpack-src-dir=blocks --output-path=build",
