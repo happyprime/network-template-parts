@@ -83,6 +83,10 @@ Now, an individual site administrator can make changes to a navigation menu whil
 
 ## Changelog
 
+### 1.0.3
+
+* Adjust deployment scripting.
+
 ### 1.0.2
 
 * Update `@wordpress/scripts` dependency to 26.8.0.

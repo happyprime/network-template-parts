@@ -2,7 +2,7 @@
 /**
  * Plugin Name:  Network Template Parts
  * Description:  Render template parts in a site or network context.
- * Version:      1.0.2
+ * Version:      1.0.3
  * Plugin URI:   https://github.com/happyprime/network-template-parts/
  * Author:       Happy Prime
  * Author URI:   https://happyprime.co
