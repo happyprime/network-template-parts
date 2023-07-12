@@ -83,6 +83,11 @@ Now, an individual site administrator can make changes to a navigation menu whil
 
 ## Changelog
 
+### 1.0.2
+
+* Update `@wordpress/scripts` dependency to 26.8.0.
+* Include built files so that the block actually works.
+
 ### 1.0.1
 
 * Update `@wordpress/scripts` dependency to 26.6.0.
