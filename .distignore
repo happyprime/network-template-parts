@@ -5,6 +5,7 @@ vendor/
 .distignore
 .eslintrc.js
 .gitignore
+.wordpress-org/
 composer.json
 composer.lock
 package-lock.json
