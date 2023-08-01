@@ -38,7 +38,7 @@ The Network Template Part block renders a selected template part in either a "si
 
 Attributes:
 
-* `slug`  determines which template part to load. Template parts are located in a theme's `parts/` directory.
+* `slug` determines which template part to load. Template parts are located in a theme's `parts/` directory.
 * `context` determines the context in which the part should render.
 
 ## Examples
