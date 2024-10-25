@@ -8,8 +8,8 @@ const TerserPlugin = require('terser-webpack-plugin');
  *
  * Valid entry points are index.js and view.js.
  *
- * @param sourceDir
- * @param type
+ * @param {string} sourceDir The source directory.
+ * @param {string} type The type of build in progress.
  * @returns {object} An object of entry points.
  */
 const getEntries = (sourceDir, type) => {
