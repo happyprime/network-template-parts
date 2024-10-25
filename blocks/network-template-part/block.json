@@ -1,6 +1,6 @@
 {
 	"$schema": "https://json.schemastore.org/block.json",
-	"apiVersion": 2,
+	"apiVersion": 3,
 	"name": "ntp/network-template-part",
 	"title": "Network Template Part",
 	"category": "widgets",
