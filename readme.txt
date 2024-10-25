@@ -1,7 +1,7 @@
 # Network Template Parts
 Contributors: happyprime, jeremyfelt, slocker, philcable
 Tags: site-editor, templates, multisite
-Requires at least: 6.2
+Requires at least: 6.3
 Tested up to: 6.6
 Stable tag: 1.0.4
 License: GPLv2 or later
@@ -89,6 +89,14 @@ This provides some common HTML structure, loads a network-level logo, and also p
 Now, an individual site administrator can make changes to a navigation menu while also receiving updates from the theme and the network if the look and feel of the broader network changes.
 
 ## Changelog
+
+### 1.0.4
+
+* Confirm WordPress 6.6 compatibility.
+* Raise minimum supported WordPress to 6.3.
+* Update `block.json` API version to 3.
+* Improve build tooling, coding standards.
+* No functional changes.
 
 ### 1.0.3
 

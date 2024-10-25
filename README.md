@@ -83,6 +83,14 @@ Now, an individual site administrator can make changes to a navigation menu whil
 
 ## Changelog
 
+### 1.0.4
+
+* Confirm WordPress 6.6 compatibility.
+* Raise minimum supported WordPress to 6.3.
+* Update `block.json` API version to 3.
+* Improve build tooling, coding standards.
+* No functional changes.
+
 ### 1.0.3
 
 * Adjust deployment scripting.
