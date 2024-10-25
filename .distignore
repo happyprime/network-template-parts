@@ -3,11 +3,14 @@
 node_modules/
 vendor/
 .distignore
+.editorconfig
 .eslintrc.js
 .gitignore
+.prettierrc.js
 .wordpress-org/
 composer.json
 composer.lock
 package-lock.json
 package.json
-phpcs.xml
+phpcs.xml.dist
+webpack.config.js

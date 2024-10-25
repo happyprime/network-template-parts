@@ -9,14 +9,14 @@ import ServerSideRender from '@wordpress/server-side-render';
 // Internal dependencies.
 import metadata from './block.json';
 
-const Edit = ( props ) => {
+const Edit = (props) => {
 	const {
 		attributes: { slug, context },
 		setAttributes,
 	} = props;
 
-	const { options } = useSelect( ( select ) => {
-		const parts = select( 'core' ).getEntityRecords(
+	const { options } = useSelect((select) => {
+		const parts = select('core').getEntityRecords(
 			'postType',
 			'wp_template_part',
 			{
@@ -25,46 +25,41 @@ const Edit = ( props ) => {
 		);
 
 		const partOptions = parts
-			? parts.map( ( part ) => ( {
+			? parts.map((part) => ({
 					label: part.slug,
 					value: part.slug,
-			  } ) )
+				}))
 			: [];
 
-		partOptions.unshift( {
-			label: __( 'None', 'network-template-parts' ),
+		partOptions.unshift({
+			label: __('None', 'network-template-parts'),
 			value: '',
-		} );
+		});
 
 		return {
 			options: partOptions,
 		};
-	}, [] );
+	}, []);
 
 	return (
-		<div { ...useBlockProps() }>
+		<div {...useBlockProps()}>
 			<InspectorControls>
 				<PanelBody
-					title={ __(
+					title={__(
 						'Template part options',
 						'network-template-parts'
-					) }
+					)}
 				>
 					<SelectControl
-						label={ __(
-							'Template part',
-							'network-template-parts'
-						) }
-						value={ slug }
-						options={ options }
-						onChange={ ( value ) =>
-							setAttributes( { slug: value } )
-						}
+						label={__('Template part', 'network-template-parts')}
+						value={slug}
+						options={options}
+						onChange={(value) => setAttributes({ slug: value })}
 					/>
 					<SelectControl
-						label={ __( 'Context', 'network-template-parts' ) }
-						value={ context }
-						options={ [
+						label={__('Context', 'network-template-parts')}
+						value={context}
+						options={[
 							{
 								label: 'Site',
 								value: 'site',
@@ -73,23 +68,23 @@ const Edit = ( props ) => {
 								label: 'Network',
 								value: 'network',
 							},
-						] }
-						onChange={ ( value ) => {
-							setAttributes( { context: value } );
-						} }
+						]}
+						onChange={(value) => {
+							setAttributes({ context: value });
+						}}
 					/>
 				</PanelBody>
 			</InspectorControls>
 			<Disabled>
 				<ServerSideRender
-					block={ metadata.name }
-					attributes={ props.attributes }
+					block={metadata.name}
+					attributes={props.attributes}
 				/>
 			</Disabled>
 		</div>
 	);
 };
 
-registerBlockType( metadata, {
+registerBlockType(metadata, {
 	edit: Edit,
-} );
+});
