@@ -2,7 +2,7 @@
 Contributors: happyprime, jeremyfelt, slocker, philcable
 Tags: site-editor, templates, multisite
 Requires at least: 6.3
-Tested up to: 6.6
+Tested up to: 6.7
 Stable tag: 1.0.4
 License: GPLv2 or later
 Requires PHP: 7.4
