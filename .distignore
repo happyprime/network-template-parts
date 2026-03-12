@@ -2,11 +2,12 @@
 .github
 node_modules/
 vendor/
+.browserslistrc
 .distignore
 .editorconfig
-.eslintrc.js
 .gitignore
 .prettierrc.js
+eslint.config.mjs
 .wordpress-org/
 composer.json
 composer.lock
