@@ -1,0 +1,6 @@
+includes:
+  - %rootDir%/../../happyprime/coding-standards/phpstan.neon.dist
+
+parameters:
+  level: 9
+  treatPhpDocTypesAsCertain: false
