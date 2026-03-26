@@ -21,6 +21,7 @@
 		"npm": ">=10"
 	},
 	"devDependencies": {
+		"@wordpress/env": "^10.0.0",
 		"@babel/core": "^7.26.0",
 		"@babel/plugin-transform-runtime": "^7.25.9",
 		"@babel/preset-env": "^7.26.0",
@@ -40,7 +41,12 @@
 		"start": "webpack --mode development --watch --env dir=blocks",
 		"lint": "eslint .",
 		"fix": "eslint . --fix",
-		"lint:package": "node ./node_modules/npm-package-json-lint/dist/cli.js ./"
+		"lint:package": "node ./node_modules/npm-package-json-lint/dist/cli.js ./",
+		"env:start": "wp-env start",
+		"env:stop": "wp-env stop",
+		"env:destroy": "wp-env destroy",
+		"env:cli": "wp-env run cli",
+		"env:logs": "wp-env logs"
 	},
 	"npmpackagejsonlint": {
 		"extends": "@wordpress/npm-package-json-lint-config"
