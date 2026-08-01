@@ -37,9 +37,10 @@
 	"scripts": {
 		"build": "webpack --mode production --env dir=blocks",
 		"start": "webpack --mode development --watch --env dir=blocks",
-		"lint": "eslint .",
+		"lint": "npm run lint:js",
 		"fix": "eslint . --fix",
-		"lint:package": "node ./node_modules/npm-package-json-lint/dist/cli.js ./"
+		"lint:package": "node ./node_modules/npm-package-json-lint/dist/cli.js ./",
+		"lint:js": "eslint ."
 	},
 	"browserslist": [
 		"extends @wordpress/browserslist-config"
