@@ -1,2 +1,6 @@
 /node_modules
 /vendor/
+
+# Ignore local Claude settings
+.claude/settings.local.json
+.reviews/
