@@ -1,0 +1,14 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/wp-env.json",
+	"core": "WordPress/WordPress#7.1-branch",
+	"phpVersion": "8.4",
+	"port": 8910,
+	"testsEnvironment": false,
+	"multisite": true,
+	"plugins": [ "." ],
+	"config": {
+		"WP_DEBUG": true,
+		"WP_DEBUG_LOG": true,
+		"SCRIPT_DEBUG": true
+	}
+}

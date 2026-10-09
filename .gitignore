@@ -1,2 +1,9 @@
 /node_modules
 /vendor/
+
+# wp-env
+/.wp-env.override.json
+
+# Ignore local Claude settings
+.claude/settings.local.json
+.reviews/

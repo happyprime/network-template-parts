@@ -1,5 +1,24 @@
 <?xml version="1.0"?>
-<ruleset name="WordPress coding standards for Happy Prime plugins">
+<ruleset name="Network Template Parts">
 	<file>.</file>
-	<rule ref="vendor/happyprime/coding-standards/HappyPrime"/>
+
+	<exclude-pattern>build/*</exclude-pattern>
+
+	<rule ref="HappyPrime"/>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="network-template-parts"/>
+			</property>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="NTP_"/>
+			</property>
+		</properties>
+	</rule>
 </ruleset>

@@ -2,7 +2,7 @@
 Contributors: happyprime, jeremyfelt, slocker, philcable
 Tags: site-editor, templates, multisite
 Requires at least: 6.3
-Tested up to: 6.7
+Tested up to: 7.1
 Stable tag: 1.0.4
 License: GPLv2 or later
 Requires PHP: 7.4
@@ -58,16 +58,16 @@ A `templates/index.html` file may contain:
 <!-- wp:ntp/network-template-part {"slug":"header","context":"network"} /-->
 <!-- wp:ntp/network-template-part {"slug":"main-index","context":"site"} /-->
 <!-- wp:ntp/network-template-part {"slug":"footer","context":"network"} /-->
-</code>>
+</code>
 
 This loads `parts/header.html` from the main site on the network, `parts/main-index.html` from the current site, and `parts/footer.html` from the main site on the network.
 
-The `parts/header.html` file main contain:
+The `parts/header.html` file may contain:
 
 <code>
 <!-- wp:ntp/network-template-part {"slug":"header-top","context":"network"} /-->
 <!-- wp:ntp/network-template-part {"slug":"header-main","context":"network"} /-->
-</code>>
+</code>
 
 This defines two areas in the header to be managed at the network level. The `parts/header-main.html` may contain something like:
 
@@ -82,7 +82,7 @@ This defines two areas in the header to be managed at the network level. The `pa
 	<!-- /wp:group -->
 </div>
 <!-- /wp:group -->
-</code>>
+</code>
 
 This provides some common HTML structure, loads a network-level logo, and also provides a site-level navigation in `parts/header-main-site-navigation.html`.
 

@@ -7,12 +7,16 @@
 
 namespace NTP\Blocks\NetworkTemplatePart;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 add_action( 'init', __NAMESPACE__ . '\register_block' );
 
 /**
- * Register the block.
+ * Registers the block.
  */
-function register_block() {
+function register_block(): void {
 	register_block_type_from_metadata(
 		NTP_PLUGIN_DIR . '/build/network-template-part',
 		[
@@ -22,38 +26,48 @@ function register_block() {
 }
 
 /**
- * Retrieve the block rendered as HTML.
+ * Retrieves the block rendered as HTML.
  *
- * @param array $attributes The block attributes.
+ * @param array<string, mixed> $attributes The block attributes.
  * @return string The block HTML.
  */
 function get_block_html( array $attributes ): string {
-	$ntp_block_defaults = [
-		'slug'    => '',
-		'context' => 'site',
-	];
+	static $rendering = [];
 
-	$attributes = wp_parse_args( $attributes, $ntp_block_defaults );
+	$slug    = $attributes['slug'] ?? '';
+	$context = $attributes['context'] ?? 'site';
 
-	if ( '' === $attributes['slug'] ) {
-		return '<p>Please specify a template part slug.</p>';
+	// The first entry in the switched stack is the site that made the original request.
+	$switched_stack   = $GLOBALS['_wp_switched_stack'] ?? [];
+	$original_site_id = is_array( $switched_stack ) ? reset( $switched_stack ) : false;
+
+	if ( ! is_string( $slug ) || '' === $slug ) {
+		return '<p>' . esc_html__( 'Please specify a template part slug.', 'network-template-parts' ) . '</p>';
 	}
 
 	$switched = false;
 
-	if ( 'network' === $attributes['context'] && is_multisite() && ! is_main_site() ) {
+	if ( 'network' === $context && is_multisite() && ! is_main_site() ) {
 		$switched = true;
 		switch_to_blog( get_main_site_id() );
-	} elseif ( 'site' === $attributes['context'] && is_multisite() && ! empty( $GLOBALS['_wp_switched_stack'] ) ) {
+	} elseif ( 'site' === $context && is_multisite() && is_int( $original_site_id ) ) {
 		$switched = true;
-
-		// We're already operating in a switched state, switch to the site that made the original request.
-		switch_to_blog( $GLOBALS['_wp_switched_stack'][ array_key_first( $GLOBALS['_wp_switched_stack'] ) ] );
+		switch_to_blog( $original_site_id );
 	}
 
-	ob_start();
-	block_template_part( $attributes['slug'] );
-	$content = ob_get_clean();
+	// A part that includes itself, directly or through another site, would recurse until PHP runs out of memory.
+	$key     = get_current_blog_id() . ':' . $slug;
+	$content = '';
+
+	if ( ! isset( $rendering[ $key ] ) ) {
+		$rendering[ $key ] = true;
+
+		ob_start();
+		block_template_part( $slug );
+		$content = (string) ob_get_clean();
+
+		unset( $rendering[ $key ] );
+	}
 
 	if ( $switched ) {
 		restore_current_blog();

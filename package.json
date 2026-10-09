@@ -21,30 +21,35 @@
 		"npm": ">=10"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.26.0",
-		"@babel/plugin-transform-runtime": "^7.25.9",
-		"@babel/preset-env": "^7.26.0",
-		"@babel/preset-react": "^7.25.9",
-		"@happyprime/eslint-config": "^0.0.10",
-		"@wordpress/browserslist-config": "^6.10.0",
-		"@wordpress/dependency-extraction-webpack-plugin": "^6.10.0",
-		"@wordpress/npm-package-json-lint-config": "^5.10.0",
-		"babel-loader": "^9.2.1",
-		"npm-package-json-lint": "^8.0.0",
-		"webpack": "^5.95.0",
-		"webpack-cli": "^5.1.4"
+		"@babel/core": "^8.0.7",
+		"@babel/plugin-transform-runtime": "^8.0.6",
+		"@babel/preset-env": "^8.0.7",
+		"@babel/preset-react": "^8.0.1",
+		"@babel/runtime": "^8.0.7",
+		"@happyprime/eslint-config": "^1.0.0",
+		"@wordpress/dependency-extraction-webpack-plugin": "^6.57.0",
+		"@wordpress/env": "^11.17.0",
+		"@wordpress/eslint-plugin": "^27.1.0",
+		"@wordpress/npm-package-json-lint-config": "^5.57.0",
+		"babel-loader": "^10.1.1",
+		"copy-webpack-plugin": "^14.0.0",
+		"glob": "^13.0.6",
+		"npm-package-json-lint": "^11.0.0",
+		"terser-webpack-plugin": "^5.6.1",
+		"webpack": "^5.111.1",
+		"webpack-cli": "^7.2.3"
 	},
 	"scripts": {
 		"build": "webpack --mode production --env dir=blocks",
 		"start": "webpack --mode development --watch --env dir=blocks",
-		"lint": "eslint .",
-		"fix": "eslint . --fix",
-		"lint:package": "node ./node_modules/npm-package-json-lint/dist/cli.js ./"
-	},
-	"browserslist": [
-		"extends @wordpress/browserslist-config"
-	],
-	"npmpackagejsonlint": {
-		"extends": "@wordpress/npm-package-json-lint-config"
+		"lint:js": "eslint .",
+		"fix:js": "eslint . --fix",
+		"lint:package": "node ./node_modules/npm-package-json-lint/dist/cli.js ./package.json",
+		"env:start": "npm run build && wp-env start && npm run env:seed",
+		"env:seed": "wp-env run cli --env-cwd=wp-content/plugins/network-template-parts wp eval-file .dev/seed.php",
+		"env:stop": "wp-env stop",
+		"env:destroy": "wp-env destroy",
+		"env:cli": "wp-env run cli",
+		"env:logs": "wp-env logs"
 	}
 }

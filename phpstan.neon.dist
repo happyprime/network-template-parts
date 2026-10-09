@@ -1,0 +1,13 @@
+includes:
+  - vendor/happyprime/coding-standards/phpstan.neon.dist
+
+parameters:
+  level: 9
+  treatPhpDocTypesAsCertain: false
+  paths:
+    - plugin.php
+    - blocks
+  excludePaths:
+    - build/*
+    - vendor/*
+    - node_modules/*

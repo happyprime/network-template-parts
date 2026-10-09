@@ -1,26 +1,26 @@
 {
 	"name": "happyprime/network-template-parts",
 	"description": "Render block template parts from the main site of a network.",
-	"version": "1.0.4",
 	"type": "wordpress-plugin",
-	"license": "GPLv2-or-later",
+	"license": "GPL-2.0-or-later",
 	"config": {
 		"allow-plugins": {
-			"dealerdirect/phpcodesniffer-composer-installer": true,
 			"composer/installers": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true,
 			"phpstan/extension-installer": true
 		},
 		"platform": {
 			"php": "7.4"
 		}
 	},
+	"minimum-stability": "dev",
+	"prefer-stable": true,
 	"require-dev": {
-		"happyprime/coding-standards": "*",
-		"phpcompatibility/php-compatibility": "dev-develop as 9.99.99"
+		"happyprime/coding-standards": "^1.0.0-alpha3"
 	},
 	"scripts": {
 		"phpcs": "vendor/bin/phpcs",
 		"phpcbf": "vendor/bin/phpcbf",
-		"test": "vendor/bin/phpunit"
+		"phpstan": "vendor/bin/phpstan analyse --memory-limit=2048M"
 	}
 }

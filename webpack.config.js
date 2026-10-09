@@ -2,6 +2,7 @@ const path = require('path');
 const glob = require('glob');
 const DependencyExtractionWebpackPlugin = require('@wordpress/dependency-extraction-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 /**
  * Retrieve all entries from subdirectories of the src directory.
@@ -67,7 +68,15 @@ module.exports = (env) => {
 						options: {
 							presets: [
 								'@babel/preset-env',
-								'@babel/preset-react',
+								// The classic runtime uses the global React. The
+								// automatic runtime needs the react-jsx-runtime
+								// script, which WordPress only ships from 6.6.
+								// Babel 8 reads `development` from NODE_ENV,
+								// which webpack's --mode does not set.
+								[
+									'@babel/preset-react',
+									{ runtime: 'classic', development: false },
+								],
 							],
 							plugins: ['@babel/plugin-transform-runtime'],
 						},
@@ -75,7 +84,14 @@ module.exports = (env) => {
 				},
 			],
 		},
-		plugins: [new DependencyExtractionWebpackPlugin()],
+		plugins: [
+			new DependencyExtractionWebpackPlugin(),
+			// PHP registers each block from its build directory, so block.json
+			// must land there too.
+			new CopyWebpackPlugin({
+				patterns: [{ from: '**/block.json', context: sourceDir }],
+			}),
+		],
 
 		// External dependencies that should not be bundled.
 		externals: {
