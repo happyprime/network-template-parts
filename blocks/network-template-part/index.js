@@ -1,9 +1,15 @@
 // WordPress dependencies.
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import { registerBlockType } from '@wordpress/blocks';
-import { Disabled, PanelBody, SelectControl } from '@wordpress/components';
+import {
+	Button,
+	Disabled,
+	PanelBody,
+	SelectControl,
+} from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+import { addQueryArgs } from '@wordpress/url';
 import ServerSideRender from '@wordpress/server-side-render';
 
 // Internal dependencies.
@@ -15,31 +21,50 @@ const Edit = (props) => {
 		setAttributes,
 	} = props;
 
-	const { options } = useSelect((select) => {
-		const parts = select('core').getEntityRecords(
-			'postType',
-			'wp_template_part',
-			{
-				per_page: -1,
-			}
-		);
+	const { options, selectedTemplatePart } = useSelect(
+		(select) => {
+			const parts = select('core').getEntityRecords(
+				'postType',
+				'wp_template_part',
+				{
+					per_page: -1,
+				}
+			);
 
-		const partOptions = parts
-			? parts.map((part) => ({
-					label: part.slug,
-					value: part.slug,
-				}))
-			: [];
+			const partOptions = parts
+				? parts.map((part) => ({
+						label: part.slug,
+						value: part.slug,
+					}))
+				: [];
 
-		partOptions.unshift({
-			label: __('None', 'network-template-parts'),
-			value: '',
+			partOptions.unshift({
+				label: __('None', 'network-template-parts'),
+				value: '',
+			});
+
+			// Find the selected template part to get its ID
+			const selectedPart = parts?.find((part) => part.slug === slug);
+
+			return {
+				options: partOptions,
+				selectedTemplatePart: selectedPart,
+			};
+		},
+		[slug]
+	);
+
+	// Construct the site editor URL for the selected template part
+	const getEditorUrl = () => {
+		if (!selectedTemplatePart?.id) {
+			return null;
+		}
+
+		return addQueryArgs('/wp-admin/site-editor.php', {
+			postId: selectedTemplatePart.id,
+			postType: 'wp_template_part',
 		});
-
-		return {
-			options: partOptions,
-		};
-	}, []);
+	};
 
 	return (
 		<div {...useBlockProps()}>
@@ -73,6 +98,16 @@ const Edit = (props) => {
 							setAttributes({ context: value });
 						}}
 					/>
+					{slug && selectedTemplatePart && (
+						<Button
+							variant="secondary"
+							href={getEditorUrl()}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{__('Edit template part', 'network-template-parts')}
+						</Button>
+					)}
 				</PanelBody>
 			</InspectorControls>
 			<Disabled>
