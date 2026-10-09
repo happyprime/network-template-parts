@@ -10,9 +10,9 @@ namespace NTP\Blocks\NetworkTemplatePart;
 add_action( 'init', __NAMESPACE__ . '\register_block' );
 
 /**
- * Register the block.
+ * Registers the block.
  */
-function register_block() {
+function register_block(): void {
 	register_block_type_from_metadata(
 		NTP_PLUGIN_DIR . '/build/network-template-part',
 		[
@@ -22,38 +22,36 @@ function register_block() {
 }
 
 /**
- * Retrieve the block rendered as HTML.
+ * Retrieves the block rendered as HTML.
  *
- * @param array $attributes The block attributes.
+ * @param array<string, mixed> $attributes The block attributes.
  * @return string The block HTML.
  */
 function get_block_html( array $attributes ): string {
-	$ntp_block_defaults = [
-		'slug'    => '',
-		'context' => 'site',
-	];
+	$slug    = $attributes['slug'] ?? '';
+	$context = $attributes['context'] ?? 'site';
 
-	$attributes = wp_parse_args( $attributes, $ntp_block_defaults );
+	// The first entry in the switched stack is the site that made the original request.
+	$switched_stack   = $GLOBALS['_wp_switched_stack'] ?? [];
+	$original_site_id = is_array( $switched_stack ) ? reset( $switched_stack ) : false;
 
-	if ( '' === $attributes['slug'] ) {
+	if ( ! is_string( $slug ) || '' === $slug ) {
 		return '<p>Please specify a template part slug.</p>';
 	}
 
 	$switched = false;
 
-	if ( 'network' === $attributes['context'] && is_multisite() && ! is_main_site() ) {
+	if ( 'network' === $context && is_multisite() && ! is_main_site() ) {
 		$switched = true;
 		switch_to_blog( get_main_site_id() );
-	} elseif ( 'site' === $attributes['context'] && is_multisite() && ! empty( $GLOBALS['_wp_switched_stack'] ) ) {
+	} elseif ( 'site' === $context && is_multisite() && is_int( $original_site_id ) ) {
 		$switched = true;
-
-		// We're already operating in a switched state, switch to the site that made the original request.
-		switch_to_blog( $GLOBALS['_wp_switched_stack'][ array_key_first( $GLOBALS['_wp_switched_stack'] ) ] );
+		switch_to_blog( $original_site_id );
 	}
 
 	ob_start();
-	block_template_part( $attributes['slug'] );
-	$content = ob_get_clean();
+	block_template_part( $slug );
+	$content = (string) ob_get_clean();
 
 	if ( $switched ) {
 		restore_current_blog();

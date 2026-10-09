@@ -23,8 +23,6 @@
  * @package network-template-parts
  */
 
-namespace NTP;
-
 define( 'NTP_PLUGIN_DIR', __DIR__ );
 
 require_once __DIR__ . '/blocks/network-template-part/index.php';
