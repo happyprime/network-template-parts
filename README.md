@@ -55,7 +55,7 @@ A `templates/index.html` file may contain:
 
 This loads `parts/header.html` from the main site on the network, `parts/main-index.html` from the current site, and `parts/footer.html` from the main site on the network.
 
-The `parts/header.html` file main contain:
+The `parts/header.html` file may contain:
 
 ```html
 <!-- wp:ntp/network-template-part {"slug":"header-top","context":"network"} /-->
