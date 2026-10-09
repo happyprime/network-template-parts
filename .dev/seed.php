@@ -11,6 +11,10 @@
  * @package network-template-parts
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if ( ! defined( 'WP_CLI' ) || ! is_multisite() ) {
 	return;
 }

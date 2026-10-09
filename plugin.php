@@ -9,6 +9,8 @@
  * Text Domain:  network-template-parts
  * Domain Path:  /languages
  * Requires PHP: 7.4
+ * License:      GPLv2 or later
+ * License URI:  https://www.gnu.org/licenses/gpl-2.0.html
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,6 +24,10 @@
  *
  * @package network-template-parts
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 define( 'NTP_PLUGIN_DIR', __DIR__ );
 

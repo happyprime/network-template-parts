@@ -7,6 +7,10 @@
 
 namespace NTP\Blocks\NetworkTemplatePart;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 add_action( 'init', __NAMESPACE__ . '\register_block' );
 
 /**
