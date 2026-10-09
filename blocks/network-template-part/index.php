@@ -38,7 +38,7 @@ function get_block_html( array $attributes ): string {
 	$original_site_id = is_array( $switched_stack ) ? reset( $switched_stack ) : false;
 
 	if ( ! is_string( $slug ) || '' === $slug ) {
-		return '<p>Please specify a template part slug.</p>';
+		return '<p>' . esc_html__( 'Please specify a template part slug.', 'network-template-parts' ) . '</p>';
 	}
 
 	$switched = false;

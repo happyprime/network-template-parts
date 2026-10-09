@@ -61,11 +61,11 @@ const Edit = (props) => {
 						value={context}
 						options={[
 							{
-								label: 'Site',
+								label: __('Site', 'network-template-parts'),
 								value: 'site',
 							},
 							{
-								label: 'Network',
+								label: __('Network', 'network-template-parts'),
 								value: 'network',
 							},
 						]}
