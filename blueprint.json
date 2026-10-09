@@ -1,0 +1,19 @@
+{
+	"landingPage": "/wp-admin/plugins.php",
+	"preferredVersions": {
+		"php": "8.2",
+		"wp": "7.0"
+	},
+	"steps": [
+		{
+			"step": "installPlugin",
+			"pluginData": {
+				"resource": "wordpress.org/plugins",
+				"slug": "network-template-parts"
+			}
+		},
+		{
+			"step": "login"
+		}
+	]
+}

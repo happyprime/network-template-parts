@@ -21,29 +21,33 @@
 		"npm": ">=10"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.26.0",
-		"@babel/plugin-transform-runtime": "^7.25.9",
-		"@babel/preset-env": "^7.26.0",
-		"@babel/preset-react": "^7.25.9",
-		"@happyprime/eslint-config": "^0.0.10",
-		"@wordpress/browserslist-config": "^6.10.0",
-		"@wordpress/dependency-extraction-webpack-plugin": "^6.10.0",
-		"@wordpress/npm-package-json-lint-config": "^5.10.0",
-		"babel-loader": "^9.2.1",
-		"npm-package-json-lint": "^8.0.0",
-		"webpack": "^5.95.0",
-		"webpack-cli": "^5.1.4"
+		"@wordpress/env": "^11.7.0",
+		"@babel/core": "^7.29.7",
+		"@babel/plugin-transform-runtime": "^7.29.7",
+		"@babel/preset-env": "^7.29.7",
+		"@babel/preset-react": "^7.29.7",
+		"@happyprime/eslint-config": "^1.0.0",
+		"@wordpress/browserslist-config": "^6.47.0",
+		"@wordpress/dependency-extraction-webpack-plugin": "^6.47.0",
+		"@wordpress/npm-package-json-lint-config": "^5.47.0",
+		"babel-loader": "^10.1.1",
+		"glob": "^13.0.6",
+		"npm-package-json-lint": "^10.4.0",
+		"webpack": "^5.107.2",
+		"webpack-cli": "^7.0.3"
 	},
 	"scripts": {
 		"build": "webpack --mode production --env dir=blocks",
 		"start": "webpack --mode development --watch --env dir=blocks",
 		"lint": "eslint .",
 		"fix": "eslint . --fix",
-		"lint:package": "node ./node_modules/npm-package-json-lint/dist/cli.js ./"
+		"lint:package": "node ./node_modules/npm-package-json-lint/dist/cli.js ./",
+		"env:start": "wp-env start",
+		"env:stop": "wp-env stop",
+		"env:destroy": "wp-env destroy",
+		"env:cli": "wp-env run cli",
+		"env:logs": "wp-env logs"
 	},
-	"browserslist": [
-		"extends @wordpress/browserslist-config"
-	],
 	"npmpackagejsonlint": {
 		"extends": "@wordpress/npm-package-json-lint-config"
 	}
