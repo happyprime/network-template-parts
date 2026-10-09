@@ -28,6 +28,8 @@ function register_block(): void {
  * @return string The block HTML.
  */
 function get_block_html( array $attributes ): string {
+	static $rendering = [];
+
 	$slug    = $attributes['slug'] ?? '';
 	$context = $attributes['context'] ?? 'site';
 
@@ -49,9 +51,19 @@ function get_block_html( array $attributes ): string {
 		switch_to_blog( $original_site_id );
 	}
 
-	ob_start();
-	block_template_part( $slug );
-	$content = (string) ob_get_clean();
+	// A part that includes itself, directly or through another site, would recurse until PHP runs out of memory.
+	$key     = get_current_blog_id() . ':' . $slug;
+	$content = '';
+
+	if ( ! isset( $rendering[ $key ] ) ) {
+		$rendering[ $key ] = true;
+
+		ob_start();
+		block_template_part( $slug );
+		$content = (string) ob_get_clean();
+
+		unset( $rendering[ $key ] );
+	}
 
 	if ( $switched ) {
 		restore_current_blog();
