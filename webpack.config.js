@@ -67,7 +67,15 @@ module.exports = (env) => {
 						options: {
 							presets: [
 								'@babel/preset-env',
-								'@babel/preset-react',
+								// The classic runtime uses the global React. The
+								// automatic runtime needs the react-jsx-runtime
+								// script, which WordPress only ships from 6.6.
+								// Babel 8 reads `development` from NODE_ENV,
+								// which webpack's --mode does not set.
+								[
+									'@babel/preset-react',
+									{ runtime: 'classic', development: false },
+								],
 							],
 							plugins: ['@babel/plugin-transform-runtime'],
 						},
