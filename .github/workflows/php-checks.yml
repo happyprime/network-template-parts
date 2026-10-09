@@ -1,13 +1,23 @@
+# Run PHPCS, PHPStan, and PHPUnit in a single job.
+#
+# Each check runs only when the project is configured for it, so this file is
+# safe to sync to a repository that has only some of them. A check the project
+# is configured for but cannot run is reported on the pull request rather than
+# failed.
+#
 # This file is managed in https://github.com/happyprime/projects
-name: Verify build (Node 24)
+name: PHP checks
 
 on:
   pull_request:
+    branches:
+      - trunk
+      - develop
     # A change to another workflow file is no reason to run this one.
     paths:
       - '**'
       - '!.github/workflows/**'
-      - .github/workflows/verify-build.yml
+      - .github/workflows/php-checks.yml
 
 # Cancel a run that a newer push to the same pull request has superseded.
 # GitHub bills per job by wall-clock time rounded up to the minute, so a run
@@ -20,17 +30,18 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
-# The GITHUB_TOKEN used by Dependabot has read-only permissions by default. We
-# provide write permissions to this workflow so that comments can be left on
-# the pull request.
-#
-# @see https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions#changing-github_token-permissions
+# The consolidated workflow comments on the pull request when a project is
+# configured for a check it cannot run. A workflow level permissions block caps
+# what a reusable workflow receives, so the write scope is granted here.
 permissions:
   contents: read
   pull-requests: write
 
 jobs:
   call-workflow:
-    uses: happyprime/workflows/.github/workflows/verify-build.yml@trunk
+    uses: happyprime/workflows/.github/workflows/php-checks.yml@trunk
     with:
-      node-version: 24
+      php-version: '8.4'
+      wp-versions: 'latest trunk'
+    secrets:
+      composer-auth-token: ${{ secrets.COMPOSER_AUTH_TOKEN }}
