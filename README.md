@@ -81,6 +81,16 @@ This provides some common HTML structure, loads a network-level logo, and also p
 
 Now, an individual site administrator can make changes to a navigation menu while also receiving updates from the theme and the network if the look and feel of the broader network changes.
 
+## Development
+
+`npm install && composer install`, then `npm run env:start`. This builds the block, starts a multisite network at http://localhost:8910 (`admin` / `password`), and runs `.dev/seed.php`.
+
+The seed network-activates the plugin, activates Twenty Twenty-Five, and creates a second site at `/site-two/`. Both sites get `ntp-demo-banner` and `ntp-demo-nav` template parts with text naming the site they are stored on. The main site also gets `ntp-demo-header`, a network part with a site-context part inside it. Each site's front page uses all three, so http://localhost:8910/site-two/ shows the network and site contexts side by side.
+
+`npm run env:seed` reruns the seed. `npm run env:stop` stops the environment.
+
+Checks: `composer phpcs`, `composer phpstan`, `npm run lint:js`, `npm run lint:package`. Rebuild with `npm run build` and commit `build/`.
+
 ## Changelog
 
 ### 1.0.4

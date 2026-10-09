@@ -1,3 +1,4 @@
+.dev/
 .git
 .github
 node_modules/
@@ -6,11 +7,15 @@ vendor/
 .distignore
 .editorconfig
 .gitignore
+.npmpackagejsonlintrc.json
 .prettierrc.js
-eslint.config.mjs
 .wordpress-org/
+.wp-env.json
+.wp-env.override.json
+blueprint.json
 composer.json
 composer.lock
+eslint.config.mjs
 package-lock.json
 package.json
 phpcs.xml.dist
