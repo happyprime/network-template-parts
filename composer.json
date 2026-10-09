@@ -1,42 +1,26 @@
 {
 	"name": "happyprime/network-template-parts",
 	"description": "Render block template parts from the main site of a network.",
-	"version": "1.0.4",
 	"type": "wordpress-plugin",
-	"license": "GPLv2-or-later",
+	"license": "GPL-2.0-or-later",
 	"config": {
 		"allow-plugins": {
-			"dealerdirect/phpcodesniffer-composer-installer": true,
 			"composer/installers": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true,
 			"phpstan/extension-installer": true
 		},
 		"platform": {
 			"php": "7.4"
 		}
 	},
-	"repositories": [
-		{
-			"type": "package",
-			"package": {
-				"name": "phpcompatibility/php-compatibility",
-				"type": "phpcodesniffer-standard",
-				"version": "9.99.9",
-				"source": {
-					"url": "https://github.com/PHPCompatibility/PHPCompatibility.git",
-					"type": "git",
-					"reference": "9f7142356b5674164a6f6dbe12a7a1bcc632db21"
-				}
-			}
-		}
-	],
+	"minimum-stability": "dev",
+	"prefer-stable": true,
 	"require-dev": {
-		"happyprime/coding-standards": "*",
-		"phpcompatibility/php-compatibility": "9.99.9"
+		"happyprime/coding-standards": "^1.0.0-alpha3"
 	},
 	"scripts": {
 		"phpcs": "vendor/bin/phpcs",
 		"phpcbf": "vendor/bin/phpcbf",
-		"phpstan": "vendor/bin/phpstan analyse --memory-limit=2048M",
-		"test": "vendor/bin/phpunit"
+		"phpstan": "vendor/bin/phpstan analyse --memory-limit=2048M"
 	}
 }
