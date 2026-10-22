@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">Network Template Parts</title>
+<desc id="desc">A white geometric icon on a circular color badge.</desc>
+<defs>
+  <linearGradient id="badge-network-template-parts" x1="100%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#D68C00"/>
+    <stop offset="28%" stop-color="#C78200"/>
+    <stop offset="100%" stop-color="#8F5A00"/>
+  </linearGradient>
+<mask id="notch-network-template-parts"><rect width="256" height="256" fill="#fff"/><polygon points="201.2,58.4 359.1,32.3 370.6,-111.6 226.7,-99.5" fill="#000" stroke="#000" stroke-width="6.6" stroke-linejoin="round"/></mask>
+</defs>
+<circle cx="128" cy="128" r="118" fill="url(#badge-network-template-parts)" mask="url(#notch-network-template-parts)"/>
+
+  <g class="glyph" transform="translate(128 128) scale(0.85) translate(-128 -128)">
+<!-- One networked template part is shared with two child sites. -->
+  <path d="M128 110v25M89 135h78M89 135v15M167 135v15" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="98" y="58" width="60" height="52" rx="11" fill="none" stroke="#fff" stroke-width="11"/>
+  <path d="M114 76h28M114 91h20" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+  <rect x="57" y="150" width="66" height="50" rx="11" fill="none" stroke="#fff" stroke-width="11"/>
+  <rect x="133" y="150" width="66" height="50" rx="11" fill="none" stroke="#fff" stroke-width="11"/>
+  <path d="M74 171h31M150 171h31" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+  </g>
+</svg>
